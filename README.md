@@ -3,7 +3,7 @@
 Instaladores do sistema **Gestão Comercial** (vendas, caixa/PDV, estoque e financeiro para lojas).
 O código do sistema não fica aqui: este repositório só guarda os arquivos para baixar.
 
-**Baixe sempre pela página de versões:** [Releases → última versão](../../releases/latest)
+**Página de download fácil:** https://mauricio777466.github.io/gestao-comercial-downloads/ · ou [Releases → última versão](../../releases/latest)
 
 | Arquivo | Para quê |
 |---|---|

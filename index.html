@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestão Comercial — baixar</title>
+<style>
+  body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: #F3F5F4; color: #171A21; }
+  main { max-width: 640px; margin: 0 auto; padding: 32px 16px; }
+  h1 { color: #0F7B6C; margin: 0 0 4px; }
+  .versao { color: #556; margin: 0 0 24px; }
+  a.botao { display: block; padding: 18px 20px; margin: 12px 0; border-radius: 12px; background: #0F7B6C; color: #fff; text-decoration: none; font-size: 18px; font-weight: 600; }
+  a.botao.sec { background: #fff; color: #0F7B6C; border: 2px solid #0F7B6C; }
+  a.botao small { display: block; font-weight: 400; font-size: 14px; opacity: .85; margin-top: 4px; }
+  p.dica { color: #556; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Gestão Comercial</h1>
+  <p class="versao" id="versao">Última versão</p>
+  <a class="botao" id="b-atualizacao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest">
+    Baixar ATUALIZAÇÃO do servidor<small>Para quem já tem o sistema instalado. Não mexe no banco nem nas vendas.</small></a>
+  <a class="botao sec" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/GestaoComercial-Caixa-Setup.exe">
+    Baixar CAIXA<small>Programa do caixa. Pode instalar por cima para atualizar.</small></a>
+  <a class="botao sec" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/GestaoComercial-Servidor-Setup.exe">
+    Baixar SERVIDOR completo<small>Primeira instalação no computador servidor (arquivo grande, inclui o PostgreSQL).</small></a>
+  <p class="dica">Windows 10 ou 11 de 64 bits. Depois de baixar, clique duas vezes no arquivo e siga o Avançar.
+    <a href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases">Todas as versões</a></p>
+</main>
+<script>
+  fetch('https://api.github.com/repos/Mauricio777466/gestao-comercial-downloads/releases/latest')
+    .then((r) => r.ok ? r.json() : null)
+    .then((d) => {
+      if (!d) return;
+      document.getElementById('versao').textContent = 'Última versão: ' + String(d.tag_name || '').replace(/^v/i, '');
+      const a = (d.assets || []).find((x) => /Atualizacao/i.test(x.name));
+      if (a) document.getElementById('b-atualizacao').href = a.browser_download_url;
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
