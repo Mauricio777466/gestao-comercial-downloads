@@ -4,31 +4,86 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gestão Comercial — baixar</title>
+<meta name="description" content="Baixe o Gestão Comercial para Windows e os apps do vendedor e do dono para Android.">
 <style>
-  body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: #F3F5F4; color: #171A21; }
-  main { max-width: 640px; margin: 0 auto; padding: 32px 16px; }
-  h1 { color: #0F7B6C; margin: 0 0 4px; }
-  .versao { color: #556; margin: 0 0 24px; }
-  a.botao { display: block; padding: 18px 20px; margin: 12px 0; border-radius: 12px; background: #0F7B6C; color: #fff; text-decoration: none; font-size: 18px; font-weight: 600; }
-  a.botao.sec { background: #fff; color: #0F7B6C; border: 2px solid #0F7B6C; }
-  a.botao small { display: block; font-weight: 400; font-size: 14px; opacity: .85; margin-top: 4px; }
-  p.dica { color: #556; font-size: 14px; }
+  :root {
+    --bg: #0b1220; --card: #13213a; --card2: #182a48; --line: #22365a;
+    --tx: #eaf1ff; --tx2: #a9b8d4; --tx3: #7d8fb0;
+    --azul: #2563eb; --ciano: #22d3ee;
+    --grad: linear-gradient(135deg, #2563eb 0%, #22d3ee 100%);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.5; }
+  main { max-width: 680px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { margin: 0 0 4px; font-size: 32px; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h2 { margin: 36px 0 4px; font-size: 20px; }
+  .versao { color: var(--tx2); margin: 0 0 8px; }
+  .sub { color: var(--tx3); margin: 0 0 8px; font-size: 14px; }
+  a.botao { display: flex; gap: 14px; align-items: center; padding: 16px 18px; margin: 12px 0; border-radius: 16px;
+    background: var(--card); color: var(--tx); text-decoration: none; border: 1px solid var(--line); transition: border-color .15s, transform .15s; }
+  a.botao:hover, a.botao:focus-visible { border-color: var(--ciano); transform: translateY(-1px); outline: none; }
+  a.botao.principal { background: var(--grad); border: none; color: #fff; }
+  a.botao .ico { flex: 0 0 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--card2); }
+  a.botao.principal .ico { background: rgba(255,255,255,.18); }
+  a.botao svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  a.botao b { display: block; font-size: 17px; }
+  a.botao small { display: block; font-size: 14px; color: var(--tx2); }
+  a.botao.principal small { color: rgba(255,255,255,.9); }
+  .aviso { display: flex; gap: 10px; padding: 12px 14px; border-radius: 12px; background: rgba(34,211,238,.08);
+    border: 1px solid rgba(34,211,238,.35); color: var(--tx); font-size: 14px; margin: 12px 0; }
+  .aviso svg { flex: 0 0 20px; width: 20px; height: 20px; fill: none; stroke: var(--ciano); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
+  ol { padding-left: 20px; color: var(--tx2); }
+  ol b { color: var(--tx); }
+  code { background: var(--card2); padding: 1px 6px; border-radius: 6px; font-size: 13px; color: var(--tx); }
+  p.dica { color: var(--tx3); font-size: 14px; }
+  a { color: var(--ciano); }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 12px 0; }
+  summary { cursor: pointer; font-weight: 600; }
 </style>
 </head>
 <body>
 <main>
   <h1>Gestão Comercial</h1>
   <p class="versao" id="versao">Última versão</p>
-  <a class="botao" id="b-atualizacao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest">
-    Baixar ATUALIZAÇÃO do servidor<small>Para quem já tem o sistema instalado. Não mexe no banco nem nas vendas.</small></a>
-  <a class="botao sec" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/GestaoComercial-Caixa-Setup.exe">
-    Baixar CAIXA<small>Programa do caixa. Pode instalar por cima para atualizar.</small></a>
-  <a class="botao sec" href="#mac" onclick="document.getElementById('mac').scrollIntoView();return false">
-    Tenho um MacBook<small>Sem download: veja como usar no Mac (Safari ou Chrome).</small></a>
-  <a class="botao sec" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/GestaoComercial-Servidor-Setup.exe">
-    Baixar SERVIDOR completo<small>Primeira instalação no computador servidor (arquivo grande, inclui o PostgreSQL).</small></a>
-  <h2 id="mac" style="margin-top:32px">MacBook / iMac</h2>
-  <p>No Mac não precisa baixar nada: o sistema abre no navegador e vira um app com ícone no Dock.</p>
+  <p class="sub">MS Tech Soluções · Macapá e Santana</p>
+
+  <h2>No computador (Windows)</h2>
+  <a class="botao principal" id="b-atualizacao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span>
+    <span><b>Baixar ATUALIZAÇÃO do servidor</b><small>Para quem já tem o sistema instalado. Não mexe no banco nem nas vendas.</small></span></a>
+  <a class="botao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/GestaoComercial-Caixa-Setup.exe">
+    <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+    <span><b>Baixar CAIXA</b><small>Programa do caixa. Pode instalar por cima para atualizar.</small></span></a>
+  <a class="botao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/GestaoComercial-Servidor-Setup.exe">
+    <span class="ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+    <span><b>Baixar SERVIDOR completo</b><small>Primeira instalação no computador servidor (arquivo grande, inclui o PostgreSQL).</small></span></a>
+  <a class="botao" href="#mac">
+    <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M1 20h22"/></svg></span>
+    <span><b>Tenho um MacBook</b><small>Sem download: veja como usar no Mac (Safari ou Chrome).</small></span></a>
+
+  <h2>No celular (Android)</h2>
+  <div class="aviso">
+    <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    <span>Os apps só funcionam para lojas que usam o Gestão Comercial com a <b>licença em dia</b>. O acesso é pelo convite ou login que a loja passa para você.</span>
+  </div>
+  <a class="botao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/MS-Tech-Vendas.apk">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+    <span><b>App do VENDEDOR</b><small>MS Tech Vendas: o vendedor faz pedidos no celular, mesmo sem internet, e eles chegam no caixa.</small></span></a>
+  <a class="botao" href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases/latest/download/MSTech-Owner.apk">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></span>
+    <span><b>App do DONO</b><small>MSTech Owner: vendas do dia, caixa e alertas da loja na palma da mão.</small></span></a>
+  <details>
+    <summary>Como instalar o app no Android</summary>
+    <ol>
+      <li>Toque no botão do app acima e baixe o arquivo <code>.apk</code>.</li>
+      <li>Abra o arquivo baixado. Se o celular pedir, toque em <b>Configurações</b> e ative <b>Permitir desta fonte</b>.</li>
+      <li>Toque em <b>Instalar</b> e depois em <b>Abrir</b>.</li>
+      <li>Entre com o convite ou com o login que a loja passou para você.</li>
+    </ol>
+  </details>
+
+  <h2 id="mac">MacBook / iMac</h2>
+  <p style="color:var(--tx2)">No Mac não precisa baixar nada: o sistema abre no navegador e vira um app com ícone no Dock.</p>
   <ol>
     <li>No Mac, abra o <b>Safari</b> (ou o Chrome) no endereço do sistema:
       <br>na loja: <code>http://IP-DO-SERVIDOR:5000</code> (ou <code>:5100</code> na instalação antiga) · pela internet: o endereço online do sistema.</li>
@@ -38,7 +93,8 @@
   </ol>
   <p class="dica">O servidor (banco de dados) fica num computador Windows da loja ou online; o Mac entra como caixa ou para consultar.</p>
   <p class="dica">Windows 10 ou 11 de 64 bits. Depois de baixar, clique duas vezes no arquivo e siga o Avançar.
-    <a href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases">Todas as versões</a></p>
+    <a href="https://github.com/Mauricio777466/gestao-comercial-downloads/releases">Todas as versões</a> ·
+    <a href="https://mstechsolucoes.com.br">mstechsolucoes.com.br</a></p>
 </main>
 <script>
   fetch('https://api.github.com/repos/Mauricio777466/gestao-comercial-downloads/releases/latest')
