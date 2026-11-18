@@ -1,0 +1,24 @@
+name: Trocar APKs da release v1.9.4
+
+on:
+  push:
+    branches: ["claude/trocar-apks-1.9.4"]
+
+permissions:
+  contents: write
+
+jobs:
+  trocar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enviar APKs novos para a release v1.9.4
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir /tmp/sobe
+          cp previa/MSTech-Owner-previa.apk /tmp/sobe/MSTech-Owner.apk
+          cp previa/MS-Tech-Vendas-previa.apk /tmp/sobe/MS-Tech-Vendas.apk
+          cp previa/SHA256SUMS-1.9.4.txt /tmp/sobe/SHA256SUMS.txt
+          cd /tmp/sobe && sha256sum -c --ignore-missing SHA256SUMS.txt
+          gh release upload v1.9.4 MSTech-Owner.apk MS-Tech-Vendas.apk SHA256SUMS.txt --clobber -R "${{ github.repository }}"
